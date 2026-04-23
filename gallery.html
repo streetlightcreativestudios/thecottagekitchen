@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — The Cottage Kitchen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-logo" onclick="window.location.href='index.html'">
+      <span class="logo-main">The Cottage Kitchen</span>
+      <span class="logo-sub">Good Food · Good Company</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-cta" onclick="window.location.href='contact.html'">Reserve a Table</button>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="section-label">A Visual Taste</p>
+    <h1 class="page-hero-title">Our Gallery</h1>
+    <p class="page-hero-sub">Food, atmosphere, and the people who make it all happen.</p>
+  </div>
+
+  <!-- GALLERY GRID -->
+  <div class="gallery-grid">
+
+    <div class="gallery-item tall">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" alt="Restaurant Interior">
+      <div class="gallery-overlay"><span>Our Dining Space</span></div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://vitamagazine.com/wp-content/uploads/2022/02/IMG_9807-772x1024.jpg?w=600&q=80" alt="Local Dishes">
+       <div class="gallery-overlay"><span>Kontomire Stew</span></div> 
+      <div class="gallery-overlay"><span>Local Favourites</span></div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80" alt="Healthy Bowl">
+      <div class="gallery-overlay"><span>Healthy Options</span></div>
+    </div>
+
+    <div class="gallery-item wide">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Fine Dining">
+      <div class="gallery-overlay"><span>Continental Craft</span></div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80" alt="Food Spread">
+      <div class="gallery-overlay"><span>Today's Menu</span></div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&q=80" alt="Ambience">
+      <div class="gallery-overlay"><span>Warm Ambience</span></div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80" alt="Signature Dish">
+      <div class="gallery-overlay"><span>Signature Dishes</span></div>
+    </div>
+
+    <div class="gallery-item">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiouPEBb8bLTE6Pkq-nFRrzyvgx5TKoDGh0Wv2gwDm-ZWKdpOwVJaSsCy8QXDtR6N9ErygXOyinn5ZoBiOA_4gu9s_KDSUp8ySAJxSKVDJdbcrQX3l8_QzDyb-OG7D8qOVF-rtfP8dh6VU/s1600/DSC_0808.JPG?w=800&q=80" alt="Soups & Stews">
+      <div class="gallery-overlay"><span>Soups & Stews</span></div>
+    </div>
+
+    <div class="gallery-item wide">
+      <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&q=80" alt="Healthy Food">
+      <div class="gallery-overlay"><span>Eating Well</span></div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-name">The Cottage Kitchen</div>
+        <p class="footer-desc">Local dishes. Continental craft. Wholesome ingredients. Served with dignity — every single day.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">Email Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 The Cottage Kitchen. All rights reserved.</span>
+      <span>Good food. Good company. Right at home.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

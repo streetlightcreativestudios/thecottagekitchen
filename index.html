@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Cottage Kitchen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-logo" onclick="window.location.href='index.html'">
+      <span class="logo-main">The Cottage Kitchen</span>
+      <span class="logo-sub">Good Food · Good Company</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-cta" onclick="window.location.href='contact.html'">Reserve a Table</button>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+
+    <div class="hero-left">
+      <div class="hero-badge">Local & Continental Cuisine</div>
+      <h1 class="hero-title">
+        Good food.<br>
+        Good company.<br>
+        <em>Right at home.</em>
+      </h1>
+      <p class="hero-tagline">
+        Where local flavours meet continental craft — served with dignity,
+        care, and a genuine love for wholesome eating.
+      </p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="window.location.href='menu.html'">View Our Menu</button>
+        <button class="btn-outline" onclick="window.location.href='contact.html'">Reserve a Table</button>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img
+        src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=85"
+        alt="The Cottage Kitchen"
+        onerror="this.src='https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=85'"
+      >
+    </div>
+
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <span class="trust-icon">🌿</span>
+      <span class="trust-text">Healthy Ingredients</span>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <span class="trust-icon">🍲</span>
+      <span class="trust-text">Local & Continental</span>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <span class="trust-icon">🤝</span>
+      <span class="trust-text">Served with Dignity</span>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <span class="trust-icon">✦</span>
+      <span class="trust-text">Professionally Prepared</span>
+    </div>
+  </div>
+
+  <!-- FEATURED DISHES -->
+  <section class="dishes-section" id="dishes">
+
+    <div class="dishes-header">
+      <p class="section-label">From Our Kitchen</p>
+      <h2 class="section-title">Today's Favourites</h2>
+      <p class="section-sub">A taste of what makes The Cottage Kitchen special — honest food, made with care.</p>
+    </div>
+
+    <div class="dishes-grid">
+
+      <div class="dish-card">
+        <div class="dish-img-wrap">
+            <img src="https://vitamagazine.com/wp-content/uploads/2022/02/IMG_9807-772x1024.jpg?w=600&q=80" alt="Kontomire stew with smoked fish and spinach served on a dark plate alongside boiled plantain, sliced avocado, and halved soft-boiled eggs. Arranged on a wooden table with warm lighting that creates an inviting, home-cooked atmosphere.">
+          <span class="dish-tag">Local</span>
+        </div>
+        <div class="dish-body">
+          <h3>Kontomire Stew & Ampesi</h3>
+          <p>Slow-cooked cocoyam leaves in a rich palm base with smoked fish, served alongside boiled yam and plantain.</p>
+          <span class="dish-origin">🌍 Ghanaian Classic</span>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img-wrap">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80" alt="Healthy Bowl">
+          <span class="dish-tag dish-tag-healthy">Healthy</span>
+        </div>
+        <div class="dish-body">
+          <h3>Garden Harvest Bowl</h3>
+          <p>Grilled chicken breast, quinoa, roasted seasonal vegetables, avocado, and a lemon-herb dressing.</p>
+          <span class="dish-origin" style="color:var(--green)">🌱 Nutritionist Approved</span>
+        </div>
+      </div>
+
+      <div class="dish-card">
+        <div class="dish-img-wrap">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Continental">
+          <span class="dish-tag dish-tag-continental">Continental</span>
+        </div>
+        <div class="dish-body">
+          <h3>Pan-Seared Chicken Supreme</h3>
+          <p>Herb-crusted chicken breast, creamy mushroom sauce, roasted potatoes, and seasonal greens.</p>
+          <span class="dish-origin" style="color:#5a4a8a">🍽️ Continental Style</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PHILOSOPHY SECTION -->
+  <section class="philosophy-section">
+
+    <div class="philosophy-img-wrap">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Our Philosophy">
+      <div class="philosophy-badge">
+        <span class="num">5★</span>
+        <span class="lbl">Rated</span>
+      </div>
+    </div>
+
+    <div class="philosophy-text">
+      <p class="section-label">Our Philosophy</p>
+      <h2 class="section-title" style="text-align:left">More than a meal —<br>it's a feeling</h2>
+      <p class="section-sub" style="margin:0 0 36px">We believe food should nourish the body, warm the heart, and honour the culture it comes from.</p>
+
+      <div class="value-item">
+        <span class="value-icon">🥗</span>
+        <div>
+          <h4>Healthy by Design</h4>
+          <p>Every dish is crafted with nutritional balance in mind — wholesome ingredients, honest preparation.</p>
+        </div>
+      </div>
+
+      <div class="value-item">
+        <span class="value-icon">🤲</span>
+        <div>
+          <h4>Served with Dignity</h4>
+          <p>Every guest deserves attentive, professional service — whether ordering jollof or a continental platter.</p>
+        </div>
+      </div>
+
+      <div class="value-item">
+        <span class="value-icon">🌍</span>
+        <div>
+          <h4>Rooted in Culture</h4>
+          <p>Our local menu celebrates Ghanaian cuisine with the same pride and presentation as any continental dish.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="testimonial-section">
+    <p class="testimonial-text">
+      "The Cottage Kitchen is the only place I've found where I can order
+      banku and okro soup with the same confidence I'd order a steak —
+      beautifully presented, perfectly made, every single time."
+    </p>
+    <p class="testimonial-attr">— A Valued Guest, Accra</p>
+  </section>
+
+  <!-- HOURS & RESERVATION -->
+  <section class="hours-section">
+
+    <div class="hours-col">
+      <p class="section-label" style="justify-content:left">Opening Hours</p>
+      <h3 class="hours-title">We're Open</h3>
+      <div class="hours-row">
+        <span class="hours-day">Monday</span>
+        <span class="hours-closed">Closed</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Tuesday – Thursday</span>
+        <span class="hours-time">7:00am – 9:00pm</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Friday – Saturday</span>
+        <span class="hours-time">7:00am – 10:30pm</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Sunday</span>
+        <span class="hours-time">9:00am – 8:00pm</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Public Holidays</span>
+        <span class="hours-time">10:00am – 6:00pm</span>
+      </div>
+    </div>
+
+    <div class="hours-col cta-col">
+      <p class="section-label" style="justify-content:left">Reservations</p>
+      <h3 class="hours-title">Join us for a meal</h3>
+      <p class="cta-text">We recommend booking ahead, especially on weekends. Walk-ins are welcome subject to availability.</p>
+      <button class="btn-primary" onclick="window.location.href='contact.html'">Reserve Your Table</button>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-name">The Cottage Kitchen</div>
+        <p class="footer-desc">Local dishes. Continental craft. Wholesome ingredients. Served with dignity — every single day.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">Email Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 The Cottage Kitchen. All rights reserved.</span>
+      <span>Good food. Good company. Right at home.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
