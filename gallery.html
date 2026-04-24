@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gallery — The Cottage Kitchen</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(20, 10, 5, 0.96);
+      webkit-backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      animation: lbFadeIn 0.25s ease;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    @keyframes lbFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Image wrapper */
+    .lightbox-inner {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: lbSlideUp 0.3s ease;
+    }
+
+    @keyframes lbSlideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    .lightbox-img {
+      width: 100%;
+      max-height: 78vh;
+      object-fit: contain;
+      border-radius: 3px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+    }
+
+    /* Caption */
+    .lightbox-caption {
+      margin-top: 16px;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: rgba(245,239,228,0.7);
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    /* Close button */
+    .lightbox-close {
+      position: fixed;
+      top: 24px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      background: rgba(196,96,58,0.85);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 10000;
+    }
+
+    .lightbox-close:hover {
+      background: #c4603a;
+      transform: scale(1.08);
+    }
+
+    .lightbox-close::before,
+    .lightbox-close::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    .lightbox-close::before { transform: rotate(45deg); }
+    .lightbox-close::after  { transform: rotate(-45deg); }
+
+    /* Prev / Next arrows */
+    .lightbox-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 10000;
+    }
+
+    .lightbox-arrow:hover {
+      background: rgba(196,96,58,0.7);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
+
+    .lightbox-arrow svg {
+      width: 18px;
+      height: 18px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Counter */
+    .lightbox-counter {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(245,239,228,0.4);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Make gallery items show a pointer */
+    .gallery-item {
+      cursor: zoom-in;
+    }
+
+    @media (max-width: 768px) {
+      .lightbox-arrow { display: none; }
+      .lightbox-img   { max-height: 65vh; }
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <!-- NAVBAR -->
+
+  <nav id="navbar">
+
+    <div class="nav-logo" onclick="window.location.href='index.html'">
+
+      <span class="logo-main">The Cottage Kitchen</span>
+
+      <span class="logo-sub">Good Food · Good Company</span>
+
+    </div>
+
+    <ul class="nav-links">
+
+      <li><a href="index.html">Home</a></li>
+
+      <li><a href="menu.html">Menu</a></li>
+
+      <li><a href="about.html">Our Story</a></li>
+
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+
+      <li><a href="contact.html">Contact</a></li>
+
+    </ul>
+
+    <button class="nav-cta" onclick="window.location.href='contact.html'">Reserve a Table</button>
+
+
+    <!-- Hamburger Menu -->
+
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+
+      <span></span>
+
+      <span></span>
+
+      <span></span>
+
+    </div>
+
+  </nav>
+
+
+  <!-- PAGE HERO -->
+
+  <div class="page-hero">
+
+    <p class="section-label">A Visual Taste</p>
+
+    <h1 class="page-hero-title">Our Gallery</h1>
+
+    <p class="page-hero-sub">Food, atmosphere, and the people who make it all happen.</p>
+
+  </div>
+
+
+  <!-- GALLERY GRID -->
+  <!-- Each item has data-src and data-caption for the lightbox -->
+
+  <div class="gallery-grid">
+
+
+    <div class="gallery-item tall" onclick="openLightbox(0)">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" alt="Restaurant Interior">
+      <div class="gallery-overlay"><span>Our Dining Space</span></div>
+    </div>
+
+
+    <div class="gallery-item" onclick="openLightbox(1)">
+      <img src="https://vitamagazine.com/wp-content/uploads/2022/02/IMG_9807-772x1024.jpg?w=600&q=80" alt="Local Dishes">
+      <div class="gallery-overlay"><span>Local Favourites</span></div>
+    </div>
+
+
+    <div class="gallery-item" onclick="openLightbox(2)">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80" alt="Healthy Bowl">
+      <div class="gallery-overlay"><span>Healthy Options</span></div>
+    </div>
+
+
+    <div class="gallery-item wide" onclick="openLightbox(3)">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Fine Dining">
+      <div class="gallery-overlay"><span>Continental Craft</span></div>
+    </div>
+
+
+    <div class="gallery-item" onclick="openLightbox(4)">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80" alt="Food Spread">
+      <div class="gallery-overlay"><span>Today's Menu</span></div>
+    </div>
+
+
+    <div class="gallery-item" onclick="openLightbox(5)">
+      <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&q=80" alt="Ambience">
+      <div class="gallery-overlay"><span>Warm Ambience</span></div>
+    </div>
+
+
+    <div class="gallery-item" onclick="openLightbox(6)">
+      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80" alt="Signature Dish">
+      <div class="gallery-overlay"><span>Signature Dishes</span></div>
+    </div>
+
+
+    <!-- Replaced broken Blogger CDN image with stable Unsplash -->
+    <div class="gallery-item" onclick="openLightbox(7)">
+      <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80" alt="Soups & Stews">
+      <div class="gallery-overlay"><span>Soups & Stews</span></div>
+    </div>
+
+
+    <div class="gallery-item wide" onclick="openLightbox(8)">
+      <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&q=80" alt="Healthy Food">
+      <div class="gallery-overlay"><span>Eating Well</span></div>
+    </div>
+
+
+  </div>
+
+
+  <!-- ── LIGHTBOX ── -->
+  <div class="lightbox" id="lightbox" onclick="handleLightboxClick(event)">
+
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close"></button>
+
+    <button class="lightbox-arrow lightbox-prev" onclick="navigate(-1)" aria-label="Previous">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+
+    <button class="lightbox-arrow lightbox-next" onclick="navigate(1)" aria-label="Next">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <div class="lightbox-inner">
+      <img class="lightbox-img" id="lightbox-img" src="" alt="">
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+
+  </div>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-top">
+
+      <div class="footer-brand">
+
+        <div class="footer-brand-name">The Cottage Kitchen</div>
+
+        <p class="footer-desc">Local dishes. Continental craft. Wholesome ingredients. Served with dignity — every single day.</p>
+
+      </div>
+
+      <div class="footer-col">
+
+        <h4>Navigate</h4>
+
+        <ul>
+
+          <li><a href="index.html">Home</a></li>
+
+          <li><a href="menu.html">Menu</a></li>
+
+          <li><a href="about.html">Our Story</a></li>
+
+          <li><a href="gallery.html">Gallery</a></li>
+
+          <li><a href="contact.html">Contact</a></li>
+
+        </ul>
+
+      </div>
+
+      <div class="footer-col">
+
+        <h4>Get in Touch</h4>
+
+        <ul>
+
+          <li><a href="#">Instagram</a></li>
+
+          <li><a href="#">Facebook</a></li>
+
+          <li><a href="#">WhatsApp</a></li>
+
+          <li><a href="#">Email Us</a></li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <span>© 2025 The Cottage Kitchen. All rights reserved.</span>
+
+      <span>Good food. Good company. Right at home.</span>
+
+    </div>
+
+  </footer>
+
+
+  <script src="js/main.js"></script>
+
+  <script>
+    // ── LIGHTBOX DATA ──
+    // Matches the order of gallery items above
+    const galleryItems = [
+      { src: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=90', caption: 'Our Dining Space' },
+      { src: 'https://vitamagazine.com/wp-content/uploads/2022/02/IMG_9807-772x1024.jpg?w=1200&q=90', caption: 'Local Favourites' },
+      { src: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&q=90', caption: 'Healthy Options' },
+      { src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=90', caption: 'Continental Craft' },
+      { src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&q=90', caption: "Today's Menu" },
+      { src: 'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=1200&q=90', caption: 'Warm Ambience' },
+      { src: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&q=90', caption: 'Signature Dishes' },
+      { src: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=1200&q=90', caption: 'Soups & Stews' },
+      { src: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1400&q=90', caption: 'Eating Well' },
+    ];
+
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightbox();
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden'; // prevent background scroll
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navigate(direction) {
+      currentIndex = (currentIndex + direction + galleryItems.length) % galleryItems.length;
+      updateLightbox();
+    }
+
+    function updateLightbox() {
+      const item = galleryItems[currentIndex];
+      const img = document.getElementById('lightbox-img');
+      // Fade out, swap, fade in
+      img.style.opacity = '0';
+      img.style.transition = 'opacity 0.2s ease';
+      setTimeout(() => {
+        img.src = item.src;
+        img.alt = item.caption;
+        img.style.opacity = '1';
+      }, 200);
+      document.getElementById('lightbox-caption').textContent = item.caption;
+      document.getElementById('lightbox-counter').textContent =
+        (currentIndex + 1) + ' / ' + galleryItems.length;
+    }
+
+    // Close when clicking the dark backdrop (not the image)
+    function handleLightboxClick(e) {
+      if (e.target === document.getElementById('lightbox')) {
+        closeLightbox();
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      const lb = document.getElementById('lightbox');
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'ArrowRight') navigate(1);
+      if (e.key === 'ArrowLeft')  navigate(-1);
+      if (e.key === 'Escape')     closeLightbox();
+    });
+
+    // Touch/swipe support for mobile
+    let touchStartX = 0;
+    document.getElementById('lightbox').addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    });
+    document.getElementById('lightbox').addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) navigate(diff > 0 ? 1 : -1);
+    });
+  </script>
+
+
+</body>
+
+</html>
